@@ -1,6 +1,6 @@
 {
   "name": "starbase4",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "",
   "main": "./dist/index.js",
   "bin": "./dist/index.js",
