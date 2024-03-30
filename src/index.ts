@@ -2,6 +2,7 @@
 const prompts = require('prompts');
 import { green, yellow, red } from 'picocolors';
 const fs = require('fs-extra');
+const path = require('path');
 
 (async () => {
   const questions = [
@@ -40,7 +41,7 @@ const fs = require('fs-extra');
   const response = await prompts(questions, { onCancel });
 
   if (response.value) {
-    fs.copy('./template', response.value, (err) => {
+    fs.copy(path.resolve('./template'), response.value, (err) => {
       if (err) {
         return console.error(red(err));
       }

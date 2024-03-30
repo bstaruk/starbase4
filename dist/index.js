@@ -13,6 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const prompts = require('prompts');
 const picocolors_1 = require("picocolors");
 const fs = require('fs-extra');
+const path = require('path');
 (() => __awaiter(void 0, void 0, void 0, function* () {
     const questions = [
         {
@@ -45,7 +46,7 @@ const fs = require('fs-extra');
     };
     const response = yield prompts(questions, { onCancel });
     if (response.value) {
-        fs.copy('./template', response.value, (err) => {
+        fs.copy(path.resolve('./template'), response.value, (err) => {
             if (err) {
                 return console.error((0, picocolors_1.red)(err));
             }
