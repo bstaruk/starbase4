@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const prompts = require('prompts');
-import { green, yellow } from 'picocolors';
-const fs = require('fs');
+import { green, yellow, red } from 'picocolors';
+const fs = require('fs-extra');
 
 (async () => {
   const questions = [
@@ -40,6 +40,13 @@ const fs = require('fs');
   const response = await prompts(questions, { onCancel });
 
   if (response.value) {
-    console.log(green(`Starbase has been installed in "${response.value}"`) + '\n');
+    fs.copy('./template', response.value, (err) => {
+      if (err) {
+        return console.error(red(err));
+      }
+      console.log(
+        green(`Starbase has been installed in "${response.value}"`) + '\n',
+      );
+    });
   }
 })();

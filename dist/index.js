@@ -12,7 +12,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const prompts = require('prompts');
 const picocolors_1 = require("picocolors");
-const fs = require('fs');
+const fs = require('fs-extra');
 (() => __awaiter(void 0, void 0, void 0, function* () {
     const questions = [
         {
@@ -45,7 +45,12 @@ const fs = require('fs');
     };
     const response = yield prompts(questions, { onCancel });
     if (response.value) {
-        console.log((0, picocolors_1.green)(`Starbase has been installed in "${response.value}"`) + '\n');
+        fs.copy('./template', response.value, (err) => {
+            if (err) {
+                return console.error((0, picocolors_1.red)(err));
+            }
+            console.log((0, picocolors_1.green)(`Starbase has been installed in "${response.value}"`) + '\n');
+        });
     }
 }))();
 //# sourceMappingURL=index.js.map
