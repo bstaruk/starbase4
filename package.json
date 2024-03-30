@@ -1,11 +1,14 @@
 {
   "name": "starbase4",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "index.js",
   "bin": {
     "starbase4": "./dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "npx tsc",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'"
@@ -27,6 +30,6 @@
     "typescript": "^5.4.3"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=18.17.0"
   }
 }
