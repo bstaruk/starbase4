@@ -9,13 +9,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const prompts = require('prompts');
+const fs = require('fs');
 (() => __awaiter(this, void 0, void 0, function* () {
     const response = yield prompts({
-        type: 'number',
+        type: 'text',
         name: 'value',
-        message: 'How old are you?',
-        validate: (value) => (value < 18 ? `Nightclub is 18+ only` : true),
+        message: 'What folder would you like to install Starbase in?',
+        validate: (value) => {
+            if (!value)
+                return 'This is not a valid folder name.';
+            try {
+                // Check if the directory exists
+                if (fs.existsSync(value) && fs.lstatSync(value).isDirectory()) {
+                    const files = fs.readdirSync(value);
+                    if (files.length > 0) {
+                        return 'This folder is not empty.';
+                    }
+                    return true;
+                }
+            }
+            catch (err) {
+                return 'Error checking directory existence -- this is usually a permissions issue.';
+            }
+            return true;
+        },
     });
-    console.log(response); // => { value: 24 }
+    console.log(`This folder is good! (${response.value})`);
 }))();
 //# sourceMappingURL=index.js.map
