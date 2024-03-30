@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,32 +9,43 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 const prompts = require('prompts');
+const picocolors_1 = require("picocolors");
 const fs = require('fs');
-(() => __awaiter(this, void 0, void 0, function* () {
-    const response = yield prompts({
-        type: 'text',
-        name: 'value',
-        message: 'What folder would you like to install Starbase in?',
-        validate: (value) => {
-            if (!value)
-                return 'This is not a valid folder name.';
-            try {
-                // Check if the directory exists
-                if (fs.existsSync(value) && fs.lstatSync(value).isDirectory()) {
-                    const files = fs.readdirSync(value);
-                    if (files.length > 0) {
-                        return 'This folder is not empty.';
+(() => __awaiter(void 0, void 0, void 0, function* () {
+    const questions = [
+        {
+            type: 'text',
+            name: 'value',
+            message: 'What folder would you like to install Starbase in?',
+            validate: (value) => {
+                if (!value)
+                    return 'This is not a valid folder name.';
+                try {
+                    // Check if the directory exists
+                    if (fs.existsSync(value) && fs.lstatSync(value).isDirectory()) {
+                        const files = fs.readdirSync(value);
+                        if (files.length > 0) {
+                            return 'This folder is not empty.';
+                        }
+                        return true;
                     }
-                    return true;
                 }
-            }
-            catch (err) {
-                return 'Error checking directory existence -- this is usually a permissions issue.';
-            }
-            return true;
+                catch (err) {
+                    return 'Error checking directory existence -- this is usually a permissions issue.';
+                }
+                return true;
+            },
         },
-    });
-    console.log(`This folder is good! (${response.value})`);
+    ];
+    const onCancel = () => {
+        console.log((0, picocolors_1.yellow)('Starbase initialization cancelled!') + '\n');
+        return true;
+    };
+    const response = yield prompts(questions, { onCancel });
+    if (response.value) {
+        console.log((0, picocolors_1.green)(`Starbase has been installed in "${response.value}"`) + '\n');
+    }
 }))();
 //# sourceMappingURL=index.js.map
