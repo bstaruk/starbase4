@@ -46,7 +46,8 @@ const path = require('path');
     };
     const response = yield prompts(questions, { onCancel });
     if (response.value) {
-        fs.copy(path.resolve('./template'), response.value, (err) => {
+        const template = path.join(__dirname, '../template');
+        fs.copy(template, response.value, (err) => {
             if (err) {
                 return console.error((0, picocolors_1.red)(err));
             }
