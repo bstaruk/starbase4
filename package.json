@@ -1,0 +1,22 @@
+{
+  "name": "starbase4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "prettier": "^3.2.5"
+  },
+  "scripts": {
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bstaruk/starbase4.git"
+  },
+  "author": "brian@staruk.net",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bstaruk/starbase4/issues"
+  },
+  "homepage": "https://github.com/bstaruk/starbase4"
+}
