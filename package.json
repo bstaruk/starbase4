@@ -1,14 +1,8 @@
 {
   "name": "starbase4",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
-  "main": "index.js",
-  "bin": {
-    "starbase4": "./dist/index.js"
-  },
-  "files": [
-    "dist"
-  ],
+  "main": "./dist/index.js",
   "scripts": {
     "build": "npx tsc",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'"
