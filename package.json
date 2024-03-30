@@ -1,17 +1,16 @@
 {
   "name": "starbase4",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "",
   "main": "./dist/index.js",
-  "bin": {
-    "starbase4": "./dist/index.js"
-  },
+  "bin": "./dist/index.js",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "npx tsc",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'"
+    "build": "tsc",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
+    "start": "tsc && node ./dist/index.js"
   },
   "repository": {
     "type": "git",
