@@ -1,13 +1,10 @@
 {
   "name": "starbase4",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "bin": {
     "starbase4": "./dist/index.js"
-  },
-  "dependencies": {
-    "prettier": "^3.2.5"
   },
   "scripts": {
     "build": "webpack --config ./src/webpack.config.js",
@@ -17,16 +14,22 @@
     "type": "git",
     "url": "git+https://github.com/bstaruk/starbase4.git"
   },
-  "author": "brian@staruk.net",
+  "author": "Brian Staruk <brian@staruk.net>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/bstaruk/starbase4/issues"
   },
   "homepage": "https://github.com/bstaruk/starbase4",
+  "dependencies": {
+  },
   "devDependencies": {
+    "prettier": "^3.2.5",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.3",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
