@@ -1,8 +1,11 @@
 {
   "name": "starbase4",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "starbase4": "./dist/index.js"
+  },
   "dependencies": {
     "prettier": "^3.2.5"
   },

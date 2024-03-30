@@ -16,6 +16,6 @@ module.exports = {
   },
   output: {
     filename: 'index.js',
-    path: path.resolve(process.cwd()),
+    path: path.resolve(process.cwd(), 'dist'),
   },
 };
